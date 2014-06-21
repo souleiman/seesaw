@@ -39,5 +39,5 @@ func main() {
 			t.Execute(w, flags)
 		})
 
-	http.ListenAndServe(fmt.Sprintf("localhost:%d", flags.Port), nil)
+	http.ListenAndServe(fmt.Sprintf(":%d", flags.Port), nil)
 }
