@@ -1,8 +1,6 @@
 seesaw
 ======
 
-#RainbowDash so hard
+## Requirement
+GoLang: Version 1.2.2
 
-Test
-
-Max Test
