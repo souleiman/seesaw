@@ -1,6 +1,6 @@
 body
 {
-	background:#33CC66;
+	background:#19A8A5;
 	font-family:"Lucida Grande", Tahoma, Arial, Verdana, sans-serif;
 	font-size:small;
 	margin:8px 0 16px;
@@ -28,7 +28,7 @@ body
 {
 	width:640px;
 	clear:both;
-	color:#0033CC;
+	color:#AB965E;
 	text-align:center;
 	width:640px;
 	padding-bottom: 15px;
@@ -36,7 +36,7 @@ body
 }
 
 #footer a{
-	color:#999999;
+	color:#AB965E;
 	text-decoration: none;
 	border-bottom: 1px dotted #999999;
 }
@@ -58,7 +58,7 @@ form.appnitro
 /**** Logo Section  *****/
 h1
 {
-	background-color:#0033CC;
+	background-color:#AB965E;
 	margin:0;
 	min-height:0;
 	padding:0;
