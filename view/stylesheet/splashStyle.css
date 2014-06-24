@@ -1,0 +1,88 @@
+ #login_container {
+ 	background:#fff;
+	border-radius: 1em;
+	margin-left: auto;
+	margin-top: 5%;
+	margin-right: auto;
+    box-shadow: 15px 15px 30px #5C6F7C; 
+	text-align:center;
+	width:50%;
+	height:50%;
+	padding-top:0em;
+
+ }
+
+ #pitch_container {
+ 	background:#fff;
+	border-radius: 1em;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top:auto;
+    box-shadow: 15px 15px 30px #5C6F7C; 
+    padding-top: 1%;
+	text-align:center;
+	width:50%;
+	height:20%;
+	font-family:"Lucida Grande", Tahoma, Arial, Verdana, sans-serif;
+
+ }
+ body {
+ 	background: rgba(25,168,165,.65);
+ }
+
+ #login_form {
+	font-family:"Lucida Grande", Tahoma, Arial, Verdana, sans-serif;
+ 	padding-top: 5%;
+ 	background-color: rgba(171,150,94,.65);
+ 	border-top-left-radius: 1em;
+ 	border-top-right-radius: 1em;
+ 	border-bottom-style: solid;
+ 	border-bottom-color: rgba(171,150,94,.65);
+ }
+
+ #submit {
+ 	font-family:"Lucida Grande", Tahoma, Arial, Verdana, sans-serif;
+	margin-top: 2%;
+	margin-bottom:3%;
+	padding:1% 2%;
+	background: linear-gradient(#FFFFFF, #AB965E);
+ }
+
+ #username {
+ 	padding-top: .5%;
+ 	padding-bottom: .5%;
+ 	width:50%;
+ }
+
+ #password {
+ 	width:50%;
+ 	margin-top:1%;
+ 	padding-top: .5%;
+ 	padding-bottom:.5%;
+
+ }
+
+ input {
+	box-shadow: .15em .15em .3em #5C6F7C;  
+	border-radius: .5em;
+	/*border-color: #19A8A5;*/
+}
+
+#logo {
+	display:block;
+	height: 10%;
+	width: 20%;
+	margin-left: auto;
+	margin-right:auto;
+	border-top-left-radius: .5em;
+	border-top-right-radius: .5em;
+}
+
+label {
+	font-size: 1.2em;
+}
+
+a {
+	font-family:"Lucida Grande", Tahoma, Arial, Verdana, sans-serif;
+	font-size: 1.1em;
+}

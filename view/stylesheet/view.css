@@ -58,7 +58,15 @@ form.appnitro
 	margin:20px 20px 0;
 	padding:0 0 20px;
 }
-
+ #login_container {
+ 	background:#fff;
+	border-radius: 2%;
+	margin-left:20%;
+	margin-right:20%;
+    box-shadow: 15px 15px 30px #5C6F7C; 
+	text-align:center;
+	width:50%;
+ }
 /**** Logo Section  *****/
 /**** this would seem to be the element to style to round borders at the top, needs revisiting ****/
 h1
