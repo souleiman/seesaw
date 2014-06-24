@@ -8,7 +8,7 @@ CREATE TABLE IF NOT EXISTS PROFILE (
 CREATE TABLE IF NOT EXISTS CONTENT (
     id              SERIAL PRIMARY KEY,
     profile_id      INT REFERENCES PROFILE(id),
-    title           VARCHAR(32) NOT NULL,
+    title           VARCHAR(64) NOT NULL,
     objective       VARCHAR(160) NOT NULL,
     image           VARCHAR(255),
     last_modified   DATE,
