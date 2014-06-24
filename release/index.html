@@ -9,17 +9,30 @@
 	<section id="header" style="width:100%; height:50px; background-color:#AB965E;">
 		<section id="navbar" style="width:1024px; height:50px; margin-left:auto; margin-right:auto;">
 			<img src="images/logo.png" id="logo" style="float:left;" class="draggable">
-			<img src="images/me.png" style="float:left;" class="draggable">
-			<img src="images/heart.png" style="float:left;" class="draggable">
-			<img src="images/idea.png" style="float:left;" class="draggable">
+			<img src="images/me.png" id="search" style="float:left;" class="draggable">
+			<img src="images/heart.png" id="setting" style="float:left;" class="draggable">
+			<img src="images/idea.png" id="idea" style="float:left;" class="draggable">
 		</section>
 	</section>
 	<section id="content" style="width:1024px; height:100%; margin-left:auto; margin-right:auto; background-color:white;">
 	</section>
+	
+	<section id="formwrapper" style="width:100%; height:100%; position:absolute; top:0px; left:0px; display:none;">
+		<section id="formbg" style="width:100%; height:100%; position:absolute; background-color:black; opacity:0.8;">
+		</section>
+		<section id="form" style="width:300px; height:300px; top:50%; left:50%; margin-top:-150px; margin-left:-150px; position:relative; background-color:white;">
+			Title:<br>
+			<input type="text" name="title"><br>
+			Description:<br>
+			<textarea name="description" rows="4" cols="25" maxlength="250" style="resize:none;"></textarea><br>
+			<br>
+			<img src="images/heart.png" id="submit" class="draggable">
+		</section>
+	</section>
 
-	
-	
-	
+
+
+
 <script>
 	//	Mobile version
 	//	TODO: get width of device and cut off any hanging text
@@ -31,6 +44,21 @@
 	if (mobile) {
 		mobiledisplay();
 	}
+	
+	//	Create a new idea
+	$("#idea").click(function() {
+		document.getElementById("formwrapper").style.display="inline";
+	});
+	
+	//	Submit a new idea
+	$("#submit").click(function() {
+		alert("Submitted! (but not really)");
+	});
+	
+	//	Close form
+	$("#formbg").click(function() {
+		document.getElementById("formwrapper").style.display="none";
+	});
 
 
 
