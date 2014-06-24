@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html style="margin:0px; height:100%;">
+<head>
+	<title>iMagine</title>
+	<script src="libs/jquery-1.10.2.js"></script>
+	<script src="libs/jquery-ui-1.10.4.min.js"></script>
+</head>
+<body style="margin:0px; height:100%; background-color:#69C6C4;">
+	<section id="header" style="width:100%; height:50px; background-color:#AB965E;">
+		<section id="navbar" style="width:1024px; height:50px; margin-left:auto; margin-right:auto;">
+			<img src="images/logo.png" id="logo" style="float:left;" class="draggable">
+			<img src="images/me.png" style="float:left;" class="draggable">
+			<img src="images/heart.png" style="float:left;" class="draggable">
+			<img src="images/idea.png" style="float:left;" class="draggable">
+		</section>
+	</section>
+	<section id="content" style="width:1024px; height:100%; margin-left:auto; margin-right:auto; background-color:white;">
+	</section>
+
+	
+	
+	
+<script>
+	//	Mobile version
+	//	TODO: get width of device and cut off any hanging text
+	var mobile = false;
+	var mobiledisplay = function () {
+		document.getElementById("content").style.width="100%";
+	};
+	
+	if (mobile) {
+		mobiledisplay();
+	}
+
+
+
+
+	//	Test database
+	//	TODO: insert code to retrieve data from actual database via GO
+	//	TODO: rename tdb to appropriate name
+	var tdb = new Array();
+	tdb[0] = "This is a really cool idea and I am so glad I came up with it yay free friday ice cream fundays for everyone!";
+	tdb[1] = "No pants days";
+	tdb[2] = "Agilex slumber party idea";
+	tdb[3] = "The next big thing";
+	tdb[4] = "Rave-a-Thon";
+	tdb[5] = "I have a really cool idea for humpdays";
+	tdb[6] = "Idea to invent software that will make Agilex $1,000,000s";
+	
+	for (var i = 0; i < tdb.length; i++) {
+		var temp = "";
+		temp += '<div class="row" style="height:50px;" class="draggable">';
+		temp += '<img src="images/user.jpg" style="float:left;" class="draggable">';
+		temp += '<div style="font-size:20px;" class="draggable">';
+		temp += tdb[i];
+		temp += '</div>';
+		temp += '</div>';
+		document.getElementById("content").innerHTML += temp;
+	}
+
+
+
+
+	//
+	//	jQuery tools
+	//
+	
+	//	Draggable - add class="draggable" to any html element and it will enable dragging capabilities
+	$(function() {
+		$(".draggable").draggable();
+	});
+	
+	//	Click - a demonstration on how to invoke event on specific element when clicked
+	$("#example").click(function() {
+		//	do something cool!
+	});
+</script>
+</body>
+</html>
