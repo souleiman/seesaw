@@ -4,9 +4,10 @@ import (
 	"flag"
 	"fmt"
 	"net/http"
-
-	"github.com/souleiman/seesaw/webserver/handler"
 	"database/sql"
+	
+	"github.com/souleiman/seesaw/webserver/handler"
+	_ "github.com/lib/pq"
 )
 
 func main() {
