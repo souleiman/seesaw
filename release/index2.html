@@ -76,6 +76,22 @@
 	tdb[4] = "Rave-a-Thon";
 	tdb[5] = "I have a really cool idea for humpdays";
 	tdb[6] = "Idea to invent software that will make Agilex $1,000,000s";
+	var tdbtime = new Array();
+	tdbtime[0] = " - 14m";
+	tdbtime[1] = " - 38min";
+	tdbtime[2] = " - 1h";
+	tdbtime[3] = " - 3h";
+	tdbtime[4] = " - 5h";
+	tdbtime[5] = " - 7h";
+	tdbtime[6] = " - 19h";
+	var tdbtags = new Array();
+	tdbtags[0] = "@GSS";
+	tdbtags[1] = "@HC";
+	tdbtags[2] = "@bigdata";
+	tdbtags[3] = "@USPS";
+	tdbtags[4] = "@Amtrak";
+	tdbtags[5] = "@J&H";
+	tdbtags[6] = "@Intel";
 	
 	for (var i = 0; i < tdb.length; i++) {
 		var temp = "";
@@ -83,6 +99,9 @@
 		temp += '<img src="images/userpng.png" style="float:left; margin-top:1%; margin-left:.75%; border-radius:.5em;" class="draggable">';
 		temp += '<div style="font-size:20px; padding-top:.75%; padding-left:6%;" class="draggable">';
 		temp += tdb[i];
+		temp += tdbtime[i];
+		temp += '<br>';
+		temp += tdbtags[i];
 		temp += '</div>';
 		temp += '</div>';
 		document.getElementById("content").innerHTML += temp;
