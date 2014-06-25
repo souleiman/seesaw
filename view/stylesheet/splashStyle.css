@@ -15,14 +15,14 @@
  #pitch_container {
  	background:#fff;
 	border-radius: 1em;
-	margin-left: auto;
-	margin-right: auto;
+	margin-left: 25%;
+	margin-right: 25%;
 	margin-top:auto;
     box-shadow: 15px 15px 30px #5C6F7C; 
     padding-top: 1%;
 	text-align:center;
-	width:50%;
-	height:20%;
+	min-width:50%;
+	min-height:20%;
 	font-family:"Lucida Grande", Tahoma, Arial, Verdana, sans-serif;
 
  }
@@ -85,4 +85,11 @@ label {
 a {
 	font-family:"Lucida Grande", Tahoma, Arial, Verdana, sans-serif;
 	font-size: 1.1em;
+}
+
+p {
+	margin-left:2%;
+	margin-right:2%;
+	margin-top: auto;
+	margin-bottom: auto;
 }
