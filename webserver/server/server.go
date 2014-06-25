@@ -4,40 +4,25 @@ import (
 	"flag"
 	"fmt"
 	"net/http"
-	"text/template"
+
+	"github.com/souleiman/seesaw/webserver/handler"
+	"database/sql"
 )
 
-type Flags struct {
-	Port      int
-	Root, Api string
-}
-
-func (f *Flags) initialize() {
-	flag.IntVar(&f.Port, "p", 8080, "Port to listen to")
-	flag.StringVar(&f.Root, "r", "/", "Root of the fileserver")
-	flag.StringVar(&f.Api, "R", "/api/", "RESTful API Services")
-	flag.Parse()
-}
-
 func main() {
-	var flags Flags
-	flags.initialize()
+	port := flag.Int("p", 8080, "Port to listen to")
+	root := flag.String("r", "/", "Root of the fileserver")
+	api := flag.String("R", "/api/", "RESTful API Services")
+	dbuser := flag.String("U", "", "User for database")
+	dbname := flag.String("D", "", "Database to use")
+	flag.Parse()
 
-	http.HandleFunc(flags.Root,
-		func(w http.ResponseWriter, r *http.Request) {
-			fmt.Fprintln(w, r.URL.Path)
-		})
 
-	http.HandleFunc(flags.Api,
-		func(w http.ResponseWriter, r *http.Request) {
-			t := template.New("template")
-			t, _ = t.Parse("{" +
-				"\"port\"=\"{{.Port}}\"," +
-				"\"root\"=\"{{.Root}}\"," +
-				"\"api\"=\"{{.Api}}\"" +
-				"}")
-			t.Execute(w, flags)
-		})
+	db, _ := sql.Open("postgres", fmt.Sprintf("user=%s dbname=%s sslmode=disable", *dbuser, *dbname))
+	defer db.Close()
 
-	http.ListenAndServe(fmt.Sprintf(":%d", flags.Port), nil)
+	http.HandleFunc(*root, handler.Root(db))
+	http.HandleFunc(*api, handler.Api(db))
+
+	http.ListenAndServe(fmt.Sprintf(":%d", *port), nil)
 }
