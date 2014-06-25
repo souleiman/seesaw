@@ -13,7 +13,8 @@
 			<img src="images/logo.png" id="logo" style="float:left;" class="draggable">
 			<img src="images/profile.png" id="search" style="float:right; height:auto; width:4%; margin-top:.5%;" class="draggable">
 			<img src="images/redheart.png" id="setting" style="float:right; height:auto; width:4%; margin-top:.5%;" class="draggable">
-			<img src="images/lightbulb.png" id="idea" style="float:right; height:auto; width:4%; margin-top:.5%;" class="draggable">
+<!-- 			<img src="images/lightbulb.png" id="idea" style="float:right; height:auto; width:4%; margin-top:.5%;" class="draggable"> -->			
+			<a href = "../view/layout/form.html"><img src = "images/lightbulb.png" id="idea" style="float:right; border:0; height:auto; width:4%; margin-top:.5%;"></a>
 		</section>
 	</section>
 
@@ -147,11 +148,12 @@
 		//	do something cool!
 	});
 
-	
+	//Click a project description, open a larger panel with additional project information
 	$("#project").click(function() {
 		document.getElementById("fullidea").style.display="inline";
 	});
 
+	//Close the larger project description
 	$("#ideabg").click(function() {
 		document.getElementById("fullidea").style.display="none";
 	});
