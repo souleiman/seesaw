@@ -33,6 +33,12 @@
 		</section>
 	</section>
 
+	<section id="fullidea" style="width:100%; height:100%; position:absolute; top:0px; left:0px; display:none;">
+		<section id="ideabg" style="width:100%; height:100%; position:absolute; background-color:black; opacity:0.8;">
+		</section>
+		<section id="ideabody" style="border-radius:.5em; width:50%; height:70%; margin-left:auto; margin-right:auto; margin-top:5%; position:relative; background-color:white;">
+		</section>
+	</section>
 
 
 <script>
@@ -76,6 +82,16 @@
 	tdb[4] = "Rave-a-Thon";
 	tdb[5] = "I have a really cool idea for humpdays";
 	tdb[6] = "Idea to invent software that will make Agilex $1,000,000s";
+
+	var longdes = "Long Description of Friday Fundays";
+	
+	var popout = "";
+	popout += '<img src="images/userpng.png" style="float:left; margin-top:1%; margin-left:1%;">';
+	popout += '<div style="float:left; padding-left:1%; padding-top:4%; font-size:20px;">';
+	popout += longdes;
+	popout += '</div>';
+	document.getElementById("ideabody").innerHTML += popout;
+
 	var tdbtime = new Array();
 	tdbtime[0] = " - 14m";
 	tdbtime[1] = " - 38min";
@@ -84,6 +100,7 @@
 	tdbtime[4] = " - 5h";
 	tdbtime[5] = " - 7h";
 	tdbtime[6] = " - 19h";
+
 	var tdbtags = new Array();
 	tdbtags[0] = "@GSS";
 	tdbtags[1] = "@HC";
@@ -92,20 +109,26 @@
 	tdbtags[4] = "@Amtrak";
 	tdbtags[5] = "@J&H";
 	tdbtags[6] = "@Intel";
+
+	var comments = "0 comments";
 	
 	for (var i = 0; i < tdb.length; i++) {
 		var temp = "";
-		temp += '<div class="row" style="height:50px; padding-bottom:2%; border-bottom:solid; border-width:.1em; border-color:rgba(171,150,94,.5);" class="draggable">';
+		temp += '<div id="project" class="row" style="height:50px; padding-bottom:2%; border-bottom:solid; border-width:.1em; border-color:rgba(171,150,94,.5);" class="draggable">';
 		temp += '<img src="images/userpng.png" style="float:left; margin-top:1%; margin-left:.75%; border-radius:.5em;" class="draggable">';
-		temp += '<div style="font-size:20px; padding-top:.75%; padding-left:6%;" class="draggable">';
+		temp += '<div style="font-size:20px; padding-top:.75%; padding-left:6%;">';
 		temp += tdb[i];
 		temp += tdbtime[i];
 		temp += '<br>';
 		temp += tdbtags[i];
 		temp += '</div>';
+		temp += '<div style="float:right; font-size:18px; margin-right:2%; margin-top: auto;">';
+		temp += comments;
+		temp += '</div>';
 		temp += '</div>';
 		document.getElementById("content").innerHTML += temp;
 	}
+
 
 	
 
@@ -123,6 +146,16 @@
 	$("#example").click(function() {
 		//	do something cool!
 	});
+
+	
+	$("#project").click(function() {
+		document.getElementById("fullidea").style.display="inline";
+	});
+
+	$("#ideabg").click(function() {
+		document.getElementById("fullidea").style.display="none";
+	});
+	
 </script>
 </body>
 </html>
