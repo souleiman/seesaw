@@ -6,7 +6,6 @@ import (
 	"net/http"
 
 	"github.com/coopernurse/gorp"
-	_ "github.com/lib/pq"
 )
 
 type handle_helper func(w http.ResponseWriter, r *http.Request)
