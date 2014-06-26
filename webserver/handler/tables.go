@@ -7,11 +7,11 @@ import "time"
  */
 
 type Profile struct {
-	Id          int
-	Username    string
-	Level       int
-	Last_seen   time.Time
-	Date_joined time.Time
+	Id          int			`json:"id,string"`
+	Username    string		`json:"username"`
+	Level       int			`json:"level,string"`
+	Last_seen   time.Time	`json:"last_seen"`
+	Date_joined time.Time	`json:"date_joined"`
 }
 
 type Content struct {

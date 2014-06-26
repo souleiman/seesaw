@@ -4,51 +4,46 @@ import (
 	"database/sql"
 	"fmt"
 	"net/http"
+	"strings"
 
 	"github.com/coopernurse/gorp"
 )
 
-type handle_helper func(w http.ResponseWriter, r *http.Request)
+const (
+	API_SIZE = 4
+	API_INDEX = 0
+	DB_INDEX = 1
+	FIELD_INDEX = 2
+	VALUE_INDEX = 3
+)
 
-func Root(db *sql.DB) handle_helper {
+type HandleHelper func(http.ResponseWriter, *http.Request)
+var api_map map[string] RestHelper
+
+func init() {
+	api_map = make(map[string] RestHelper)
+	api_map["profile"] = RestProfile
+}
+
+func Root(db *sql.DB) HandleHelper {
 	maps := make(map[string]string)
 	return func(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprintf(w, maps["Test"])
 	}
 }
 
-func Api(db *sql.DB) handle_helper {
+func Api(db *sql.DB) HandleHelper {
 	dbmap := &gorp.DbMap{Db: db}
 
 	return func(w http.ResponseWriter, r *http.Request) {
-		var profiles []Profile
-		var contents []Content
-		var tags []Tag
-		var comments []Comment
+		path_len := len(r.URL.Path)
+		split := strings.Split(r.URL.Path[1: path_len - 1], "/")
 
-		dbmap.Select(&profiles, "SELECT * FROM PROFILE")
-		dbmap.Select(&contents, "SELECT * FROM CONTENT")
-		dbmap.Select(&tags, "SELECT * FROM TAG")
-		dbmap.Select(&comments, "SELECT * FROM COMMENT")
-
-		fmt.Fprintln(w, "Users")
-		for x, p := range profiles {
-			fmt.Fprintf(w, "%d: %v\n", x, p)
-		}
-
-		fmt.Fprintln(w, "Contents")
-		for x, c := range contents {
-			fmt.Fprintf(w, "%d: %v\n", x, c)
-		}
-
-		fmt.Fprintln(w, "Tags")
-		for x, t := range tags {
-			fmt.Fprintf(w, "%d: %v\n", x, t)
-		}
-
-		fmt.Fprintln(w, "Comments")
-		for x, c := range comments {
-			fmt.Fprintf(w, "%d: %v\n", x, c)
+		if rest := api_map[split[DB_INDEX]]; len(split) == API_SIZE && rest != nil {
+			rest(split, w, r, dbmap)
+		} else {
+			http.Error(w, http.StatusText(http.StatusNotAcceptable), http.StatusNotAcceptable)
+			return
 		}
 	}
 }
