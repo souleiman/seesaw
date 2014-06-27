@@ -12,7 +12,7 @@ import (
 const (
 	API_SIZE = 4
 	API_INDEX = 0
-	DB_INDEX = 1
+	REST_INDEX = 1
 	FIELD_INDEX = 2
 	VALUE_INDEX = 3
 )
@@ -23,6 +23,7 @@ var api_map map[string] RestHelper
 func init() {
 	api_map = make(map[string] RestHelper)
 	api_map["profile"] = RestProfile
+	api_map["content"] = RestContent
 }
 
 func Root(db *sql.DB) HandleHelper {
@@ -36,13 +37,21 @@ func Api(db *sql.DB) HandleHelper {
 	dbmap := &gorp.DbMap{Db: db}
 
 	return func(w http.ResponseWriter, r *http.Request) {
-		path_len := len(r.URL.Path)
-		split := strings.Split(r.URL.Path[1: path_len - 1], "/")
+		path := r.URL.Path
+		if path[len(path) - 1:] != "/" {
+			path += "/"
+		}
 
-		if rest := api_map[split[DB_INDEX]]; len(split) == API_SIZE && rest != nil {
+		split := strings.Split(path[1: len(path) - 1], "/")
+		if len(split) < 2 {
+			http.Error(w, http.StatusText(http.StatusBadRequest), http.StatusBadRequest)
+			return
+		}
+
+		if rest := api_map[split[REST_INDEX]]; rest != nil {
 			rest(split, w, r, dbmap)
 		} else {
-			http.Error(w, http.StatusText(http.StatusNotAcceptable), http.StatusNotAcceptable)
+			http.Error(w, http.StatusText(http.StatusBadRequest), http.StatusBadRequest)
 			return
 		}
 	}
