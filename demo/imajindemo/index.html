@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html style="height:100%; margin:0px; padding:0px; font-family:arial; font-size:10pt; line-height:140%;">
+<head>
+	<title>iMagine</title>
+	<script src="libs/jquery.js"></script>
+	<script src="libs/jquery_ui_min.js"></script>
+</head>
+<body style="height:100%; margin:0px; padding:0px; background-color:#ECECEC;">
+	<div id="header_bg" style="width:100%; height:50px; background-color:#FFFFFF;">
+		<div id="navbar" style="width:1024px; height:50px; margin-left:auto; margin-right:auto;">
+			<img id="logo" src="images/logo2.png" style="position:absolute; left:50%; margin-left:-84px;"></img>
+			<img id="settings" src="images/settings.png" align="left"></img>
+			<img id="compose" src="images/compose.png" align="right"></img>
+		</div>
+	</div>
+	<div id="header_border" style="width:100%; height:1px; background: url('images/goldline.png');"></div>
+	<div id="content" style="width:1024px; height:100%; margin-left:auto; margin-right:auto;">
+		<div id="tabs" style="width:256px; height:100%; float:left;">
+			<div id="newtab" style="width:100%; height:60px; background-color:#7F8C8D; font-family:verdana; color:white; font-size:36px; text-align:center; line-height:initial; padding-top:10px;">New</div>
+			<div style="width:100%; height:1px; background-color:#ECECEC;"></div>
+			<div id="newtab" style="width:100%; height:60px; background-color:#7F8C8D; font-family:verdana; color:white; font-size:36px; text-align:center; line-height:initial; padding-top:10px;">Top</div>
+			<div style="width:100%; height:1px; background-color:#ECECEC;"></div>
+			<div id="newtab" style="width:100%; height:60px; background-color:#7F8C8D; font-family:verdana; color:white; font-size:36px; text-align:center; line-height:initial; padding-top:10px;">GSS</div>
+			<div style="width:100%; height:1px; background-color:#ECECEC;"></div>
+			<div id="newtab" style="width:100%; height:60px; background-color:#7F8C8D; font-family:verdana; color:white; font-size:36px; text-align:center; line-height:initial; padding-top:10px;">HC</div>
+			<div style="width:100%; height:1px; background-color:#ECECEC;"></div>
+			<div id="newtab" style="width:100%; height:60px; background-color:#7F8C8D; font-family:verdana; color:white; font-size:36px; text-align:center; line-height:initial; padding-top:10px;">Intel</div>
+			<div style="width:100%; height:1px; background-color:#ECECEC;"></div>
+			<div id="newtab" style="width:100%; height:60px; background-color:#7F8C8D; font-family:verdana; color:white; font-size:36px; text-align:center; line-height:initial; padding-top:10px;">J&H</div>
+		</div>
+		<div id="feed" style="width:600px; float:left; background-color:white;">
+			<!--
+				The structure of a row in the feed is two columns, one to hold the user icon and the other to hold data.
+				The data shows Username and time on the first line, Subject on the second, description on the 3rd and 4th,
+				and finally the tool buttons (comment, charge, and flag) for a total of 5 lines.
+			<div id="examplerow" style="width:100%; height:120px;">
+				<div style="width:50px; float:left; margin-top:15px; margin-left:15px;">
+					<img src="images/icon.png"></img>
+				</div>
+				<div style="width:426px; float:left; margin-top:15px; margin-left:5px; margin-right:15px;">
+					<div style="float:left; font-size:11pt; font-weight:bold; color:#00A9A7;">Ty Dang</div><div align="right" style="font-size:8pt; color:#7F8C8D;">5 minutes ago</div>
+					<div style="width:426px; height:20px; overflow:hidden; font-size:14pt; color:#B4975A; text-decoration:underline;">This is the subject title line for something super freaking awesome cool</div>
+					<div style="width:426px; height:40px; overflow:hidden;">This is the first 20 words of something super awesome cool and awesome and coool and awesome and cool and awesome and cool and awesome and cool and awesome and cool and awesome and cool</div>
+					<img src="images/comments.png"></img>
+					<img src="images/flags.png"></img>
+					<img src="images/charges.png"></img>
+				</div>
+			</div>
+			<div style="width:100%; height:1px; margin-left:1px; margin-top:-1px; background: url('images/goldline.png');"></div>
+			-->
+		</div>
+		<div id="Tools" style="width:168px; height:100%; float:left;">
+			<div id="search" style="height:30px; margin-left:0px; margin-top:0px; padding-left:5px; background-color:#7F8C8D; color:#FFFFFF;">
+				Search: <input type="search" style="width:65%;">
+			</div>
+			<!-- A small AJAX sign up form. Type in username and hit button. test() is ran.
+				<button onclick="test()">Click Me!</button>
+				Username: <input id="usernametest_input" type="text">
+			-->
+		</div>
+	</div>
+	
+	<div id="popup_bg" style="width:100%; height:100%; background-color:black; opacity:0.85; position:absolute; top:0px; left:0px; display:none;"></div>
+	<div id="ideaform" style="width:512px; height:512px; background-color:white; position:absolute; top:50%; left:50%; margin-left:-256px; margin-top:-256px; padding-left:20px; padding-right:20px; padding-top:20px; border-style:solid; border-width:5px; border-color:#B4975A; display:none;">
+		<div style="width:100%; margin-top:10px; margin-bottom:25px; text-align:center; font-size:26pt; font-weight:bold; color:#00A9A7;">Got An Idea?</div>
+		<div style="width:100%; height:1px; margin-left:1px; margin-top:-1px; background-color:#B4975A;"></div>
+		<div style="font-size:18px; margin-top:10px; margin-bottom:10px;">Author: <textarea id="username_input" rows="1" cols="256" maxlength="20" style="width:256px; position:absolute; right:120px; font-size:11px;"></textarea></div>
+		<div style="width:100%; height:1px; margin-left:1px; margin-top:-1px; background-color:#B4975A;"></div>
+		<div style="font-size:18px; margin-top:10px; margin-bottom:10px;">Title: <textarea id="title_input" rows="1" cols="256" maxlength="20" style="width:256px; position:absolute; right:120px; font-size:11px;"></textarea></div>
+		<div style="width:100%; height:1px; margin-left:1px; margin-top:-1px; background-color:#B4975A;"></div>
+		<div style="font-size:18px; margin-top:10px; margin-bottom:15px;">Idea: <textarea id="summary_input" rows="1" cols="256" maxlength="140" style="width:256px; position:absolute; right:120px; font-size:11px;"></textarea></div>
+		<div style="width:100%; height:1px; margin-left:1px; margin-top:-1px; background-color:#B4975A;"></div>
+		<div style="font-size:18px; margin-top:10px; margin-bottom:60px;">Description: <textarea id="description_input" rows="4" cols="256" maxlength="1000" style="width:256px; position:absolute; right:120px; font-size:11px;"></textarea></div>
+		<div style="width:100%; height:1px; margin-left:1px; margin-top:-1px; background-color:#B4975A;"></div>
+		<div style="font-size:18px; margin-top:10px; margin-bottom:10px;">Tags: <textarea id="tags_input" rows="1" cols="256" maxlength="20" style="width:256px; position:absolute; right:120px; font-size:11px;"></textarea></div>
+		<div style="width:100%; height:1px; margin-left:1px; margin-top:-1px; background-color:#B4975A;"></div>
+		<div style="font-size:18px; margin-top:10px; margin-bottom:10px;">Picture: <textarea id="image_input"  rows="1" cols="256" maxlength="20" style="width:256px; position:absolute; right:120px; font-size:11px; color:red;">To Be Implemented.</textarea></div>
+		<div style="width:100%; height:1px; margin-left:1px; margin-top:-1px; background-color:#B4975A;"></div>
+		<div style="width:100%; height:25px; margin-top:10px; margin-bottom:10px;"><input id="ideaform_button" type="submit" style="position:absolute; right:120px;"></div>
+		<div style="width:100%; height:1px; margin-left:1px; margin-top:-1px; background-color:#B4975A;"></div>
+		<div id="error_input"></div>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<!--<button type="button" onclick="load()">Load</button>-->
+
+	<script>
+		var load = function () {
+			var xmlhttp = new XMLHttpRequest();
+			xmlhttp.onreadystatechange = function () {
+				if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+					var temp = '{"results":';
+					temp += xmlhttp.responseText;
+					temp += '}';
+					var json = JSON.parse(temp);
+					var tempstr = "";
+					for (var i = 0; i < json.results.length; i++) {
+						tempstr += '	<div style="width:100%; height:120px;">';
+						tempstr += '		<div style="width:50px; float:left; margin-top:15px; margin-left:15px;">';
+						tempstr += '			<img src="images/icon.png"></img>';
+						tempstr += '		</div>';
+						tempstr += '		<div style="width:426px; float:left; margin-top:15px; margin-left:5px; margin-right:15px;">';
+						tempstr += '			<div style="float:left; font-size:11pt; font-weight:bold; color:#00A9A7;">'+json.results[i].username+'</div><div align="right" style="font-size:8pt; color:#7F8C8D;">5 minutes ago</div>';
+						tempstr += '			<div style="width:426px; height:20px; overflow:hidden; font-size:14pt; color:#B4975A; text-decoration:underline;">'+json.results[i].title+'</div>';
+						tempstr += '			<div style="width:426px; height:40px; overflow:hidden;">'+json.results[i].description+'</div>';
+						tempstr += '			<img src="images/comments.png"></img>';
+						tempstr += '			<img src="images/flags.png"></img>';
+						tempstr += '			<img src="images/charges.png"></img>';
+						tempstr += '		</div>';
+						tempstr += '	</div>';
+						tempstr += '	<div style="width:100%; height:1px; margin-left:1px; margin-top:-1px; background-color:#B4975A;"></div>';
+					}
+					document.getElementById("feed").innerHTML = tempstr;
+				}
+			}
+			xmlhttp.open("POST", "http://localhost:1110/newfeed", true);
+			xmlhttp.send();
+		};
+		
+		$("#compose").click(function() {
+			document.getElementById("popup_bg").style.display="inline";
+			document.getElementById("ideaform").style.display="inline";
+		});
+		$("#popup_bg").click(function() {
+			document.getElementById("popup_bg").style.display="none";
+			document.getElementById("ideaform").style.display="none";
+		});
+		
+		$("#ideaform_button").click(function() {
+			//	Send the form data to server.
+			//	Server will see if data can be inserted into database. If so, it will insert.
+			//	Server will return an error if error exists
+			//	Also, do a reload of feed
+			var xmlhttp = new XMLHttpRequest();
+			xmlhttp.onreadystatechange = function () {
+				if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+					var temp = xmlhttp.responseText;
+					//var json = JSON.parse(temp);	//maybe use this in the future to do more accurate error statements
+					//if (json["errno"] == "1062")
+							//document.getElementById("testcontent").innerHTML = "Username already taken";
+					document.getElementById("error_input").innerHTML += temp;
+				}
+			}
+			xmlhttp.open("POST", "http://localhost:1110/compose", true);
+			//xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+			var testingtesting = "username=";
+			testingtesting += document.getElementById("username_input").value;
+			testingtesting += "&title=";
+			testingtesting += document.getElementById("title_input").value;
+			testingtesting += "&summary=";
+			testingtesting += document.getElementById("summary_input").value;
+			testingtesting += "&description=";
+			testingtesting += document.getElementById("description_input").value;
+			xmlhttp.send(testingtesting);
+			
+			//	Reload feed
+			load();
+			
+			//	Clear the form field
+			document.getElementById("username_input").value = "";
+			document.getElementById("title_input").value = "";
+			document.getElementById("summary_input").value = "";
+			document.getElementById("description_input").value = "";
+			document.getElementById("tags_input").value = "";
+			document.getElementById("image_input").value = "To Be Implemented.";
+			document.getElementById("popup_bg").style.display="none";
+			document.getElementById("ideaform").style.display="none";
+		});
+		
+		var test = function() {
+			//	This code makes an AJAX request.
+			//	Make a post request to server sending username information
+			//	Insert query this data.
+			//	If there is an error, dislay an error message to the user
+			var xmlhttp = new XMLHttpRequest();
+			xmlhttp.onreadystatechange = function () {
+				if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+					var temp = xmlhttp.responseText;
+					var json = JSON.parse(temp);
+					document.getElementById("feed").innerHTML = temp;
+					if (json["errno"] == "1062") {
+							document.getElementById("feed").innerHTML = "Username already taken";
+					}
+				}
+			}
+			xmlhttp.open("POST", "http://localhost:1110", true);
+			//xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+			var testingtesting = "username=";
+			testingtesting += document.getElementById("usernametest_input").value;
+			testingtesting += "&lname=Ford";
+			xmlhttp.send(testingtesting);
+		};
+		
+		//	Load feed at page load
+		load();
+		
+		
+		//	~~~~~~~*~~~~~~~*~~~~~~~*~~~~~~~*
+		//	jQuery tools
+		//	~~~~~~~*~~~~~~~*~~~~~~~*~~~~~~~*
+		
+		//	Draggable - add class="draggable" to any html element and it will enable dragging capabilities
+		$(function() {
+			$(".draggable").draggable();
+		});
+		
+		//	Click - a demonstration on how to invoke event on specific element when clicked
+		$("#example").click(function() {
+			//	do something cool!
+		});
+	</script>
+</body>
+</html>

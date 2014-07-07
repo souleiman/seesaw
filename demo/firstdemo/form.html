@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>iMagine</title>
+<link rel="stylesheet" type="text/css" href="../view/stylesheet/view.css" media="all">
+<script type="text/javascript" src="..view//script/view.js"></script>
+
+</head>
+<body id="main_body" >
+	<div id="form_container">
+	
+		<h1><a>iMagine</a></h1>
+		<form id="ideaform" class="appnitro" enctype="multipart/form-data" method="post" action="idea_request.php">
+					<div class="form_description">
+			<!-- <h2>iMagine</h2> -->
+			<img src="appathonlogo.jpg" alt="iMagine">
+			<p>Feeling inspired? Share it with Agilex and get feedback fast!</p>
+		</div>						
+			<ul >
+			
+					<li id="li_1" >
+		<label class="description" for="title_input">Username </label>
+		<div>
+			<input required id="title_input" name="username" class="element text medium" type="text" maxlength="32" value=""/> 
+		</div><p class="guidelines" id="title_guide"><small>32 characters or less!</small></p> 
+		</li>		<li id="li_6" >
+		<label class="description" for="sector_input">Sector </label>
+		<div>
+		<select class="element select medium" id="sector_input" name="SECTOR"> 
+			<option value="" selected="selected"></option>
+			<option value="1" >Civilian & Public Sector</option>
+			<option value="2" >Government Healthcare</option>
+			<option value="3" >Intel & Defense</option>
+			<option value="4" >Justice & Homeland Security</option>
+
+		</select>
+		</div> 
+		</li>		<li id="li_2" >
+		<label required class="description" for="sdesc_input">Short Description </label>
+		<div>
+			<textarea id="sdesc_input" name="description" class="element textarea small" maxlength="160"></textarea> 
+		</div><p class="guidelines" id="sdesc_guide"><small>160 characters or less!</small></p> 
+		</li>		<li id="li_3" >
+		<label class="description" for="ldesc_input">Long Description </label>
+		<div>
+			<textarea id="ldesc_in" name="LONGDESC" class="element textarea large" maxlength="512"></textarea> 
+		</div> 
+		</li>		<li id="li_4" >
+		<label class="description" for="pic_input">   Upload a Picture <img id="camera" src="colorcamera.png" alt="" width=5% height=5%></label>		
+
+		<div>
+			<input id="pic_input" name="PICTURE" accept="image/*" class="element file" type="file"/> 
+		</div><p class="guidelines" id="pic_guide"><small>Image files only!</small></p> 
+		</li>		<li id="li_5" >
+		<label required class="description" for="tag_input">  Add tags </label>
+
+		<div>
+			<textarea id="tag_input" name="tags" class="element textarea medium"></textarea> 
+		</div><p class="guidelines" id="tag_guide"><small>Separate new tags with a comma</small></p> 
+		</li>
+			
+					<li class="buttons">
+			    <!--<input type="hidden" name="form_id" value="864639" />-->
+			    
+				<input id="saveForm" class="button_text" type="submit" name="submit" value="Submit" />
+		</li>
+			</ul>
+		</form>	
+		</div>
+	</body>
+</html>
