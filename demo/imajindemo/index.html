@@ -1,39 +1,48 @@
 <!DOCTYPE html>
-<html style="height:100%; margin:0px; padding:0px; font-family:arial; font-size:10pt; line-height:140%;">
+<html>
 <head>
 	<title>iMagine</title>
+	<script>
+		//	Redirect to splash if not logged in
+		var tempaddress = 'http://10.1.98.138/seesawclone';		//	Note search for tempaddress
+		if (localStorage.username == null) {
+			window.location = tempaddress+"/splash.html";
+		}
+	</script>
 	<script src="libs/jquery.js"></script>
 	<script src="libs/jquery_ui_min.js"></script>
+	<link rel="stylesheet" type="text/css" href="styles.css">
 </head>
-<body style="height:100%; margin:0px; padding:0px; background-color:#ECECEC;">
-	<div id="header_bg" style="width:100%; height:50px; background-color:#FFFFFF;">
-		<div id="navbar" style="width:1024px; height:50px; margin-left:auto; margin-right:auto;">
-			<img id="logo" src="images/logo2.png" style="position:absolute; left:50%; margin-left:-84px;"></img>
+<body>
+	<div id="header_bg">
+		<div id="navbar">
+			<img id="logo" src="images/logo2.png"></img>
 			<img id="settings" src="images/settings.png" align="left"></img>
 			<img id="compose" src="images/compose.png" align="right"></img>
+			<!--<img id="user" src="images/icon.png" align="right"></img>-->
 		</div>
 	</div>
-	<div id="header_border" style="width:100%; height:1px; background: url('images/goldline.png');"></div>
-	<div id="content" style="width:1024px; height:100%; margin-left:auto; margin-right:auto;">
-		<div id="tabs" style="width:256px; height:100%; float:left;">
-			<div id="newtab" style="width:100%; height:60px; background-color:#7F8C8D; font-family:verdana; color:white; font-size:36px; text-align:center; line-height:initial; padding-top:10px;">New</div>
-			<div style="width:100%; height:1px; background-color:#ECECEC;"></div>
-			<div id="newtab" style="width:100%; height:60px; background-color:#7F8C8D; font-family:verdana; color:white; font-size:36px; text-align:center; line-height:initial; padding-top:10px;">Top</div>
-			<div style="width:100%; height:1px; background-color:#ECECEC;"></div>
-			<div id="newtab" style="width:100%; height:60px; background-color:#7F8C8D; font-family:verdana; color:white; font-size:36px; text-align:center; line-height:initial; padding-top:10px;">GSS</div>
-			<div style="width:100%; height:1px; background-color:#ECECEC;"></div>
-			<div id="newtab" style="width:100%; height:60px; background-color:#7F8C8D; font-family:verdana; color:white; font-size:36px; text-align:center; line-height:initial; padding-top:10px;">HC</div>
-			<div style="width:100%; height:1px; background-color:#ECECEC;"></div>
-			<div id="newtab" style="width:100%; height:60px; background-color:#7F8C8D; font-family:verdana; color:white; font-size:36px; text-align:center; line-height:initial; padding-top:10px;">Intel</div>
-			<div style="width:100%; height:1px; background-color:#ECECEC;"></div>
-			<div id="newtab" style="width:100%; height:60px; background-color:#7F8C8D; font-family:verdana; color:white; font-size:36px; text-align:center; line-height:initial; padding-top:10px;">J&H</div>
+	<div id="header_border"></div>
+	<div id="content">
+		<div id="tabs">
+			<div id="newtab" class="tab">New</div>
+			<div id="goldline"></div>
+			<div id="newtab" class="tab">Top</div>
+			<div id="goldline"></div>
+			<div id="newtab" class="tab">GSS</div>
+			<div id="goldline"></div>
+			<div id="newtab" class="tab">HC</div>
+			<div id="goldline"></div>
+			<div id="newtab" class="tab">Intel</div>
+			<div id="goldline"></div>
+			<div id="newtab" class="tab">J&H</div>
 		</div>
-		<div id="feed" style="width:600px; float:left; background-color:white;">
+		<div id="feed">
 			<!--
 				The structure of a row in the feed is two columns, one to hold the user icon and the other to hold data.
 				The data shows Username and time on the first line, Subject on the second, description on the 3rd and 4th,
 				and finally the tool buttons (comment, charge, and flag) for a total of 5 lines.
-			<div id="examplerow" style="width:100%; height:120px;">
+				<div id="examplerow" style="width:100%; height:120px;">
 				<div style="width:50px; float:left; margin-top:15px; margin-left:15px;">
 					<img src="images/icon.png"></img>
 				</div>
@@ -43,25 +52,27 @@
 					<div style="width:426px; height:40px; overflow:hidden;">This is the first 20 words of something super awesome cool and awesome and coool and awesome and cool and awesome and cool and awesome and cool and awesome and cool and awesome and cool</div>
 					<img src="images/comments.png"></img>
 					<img src="images/flags.png"></img>
-					<img src="images/charges.png"></img>
+					<img id="charges" class="charge_button" src="images/charges.png"></img>
 				</div>
 			</div>
 			<div style="width:100%; height:1px; margin-left:1px; margin-top:-1px; background: url('images/goldline.png');"></div>
 			-->
 		</div>
-		<div id="Tools" style="width:168px; height:100%; float:left;">
-			<div id="search" style="height:30px; margin-left:0px; margin-top:0px; padding-left:5px; background-color:#7F8C8D; color:#FFFFFF;">
+		<div id="tools">
+			<div id="search">
 				Search: <input type="search" style="width:65%;">
 			</div>
 			<!-- A small AJAX sign up form. Type in username and hit button. test() is ran.
 				<button onclick="test()">Click Me!</button>
 				Username: <input id="usernametest_input" type="text">
 			-->
+			<button onclick="test2()">Username?</button>
+			<button onclick="test3()">Clear Local Storage</button>
 		</div>
 	</div>
 	
-	<div id="popup_bg" style="width:100%; height:100%; background-color:black; opacity:0.85; position:absolute; top:0px; left:0px; display:none;"></div>
-	<div id="ideaform" style="width:512px; height:512px; background-color:white; position:absolute; top:50%; left:50%; margin-left:-256px; margin-top:-256px; padding-left:20px; padding-right:20px; padding-top:20px; border-style:solid; border-width:5px; border-color:#B4975A; display:none;">
+	<div id="popup_bg"></div>
+	<div id="ideaform">
 		<div style="width:100%; margin-top:10px; margin-bottom:25px; text-align:center; font-size:26pt; font-weight:bold; color:#00A9A7;">Got An Idea?</div>
 		<div style="width:100%; height:1px; margin-left:1px; margin-top:-1px; background-color:#B4975A;"></div>
 		<div style="font-size:18px; margin-top:10px; margin-bottom:10px;">Author: <textarea id="username_input" rows="1" cols="256" maxlength="20" style="width:256px; position:absolute; right:120px; font-size:11px;"></textarea></div>
@@ -88,10 +99,13 @@
 	
 	
 	
-	
 	<!--<button type="button" onclick="load()">Load</button>-->
 
 	<script>
+		var ipaddress = '10.1.98.138';
+		var port = '1110';
+		var serveraddress = 'http://'+ipaddress+':'+port;
+
 		var load = function () {
 			var xmlhttp = new XMLHttpRequest();
 			xmlhttp.onreadystatechange = function () {
@@ -101,28 +115,32 @@
 					temp += '}';
 					var json = JSON.parse(temp);
 					var tempstr = "";
+					var ideas = new Array();
+					var ideasCount = 0;
 					for (var i = 0; i < json.results.length; i++) {
-						tempstr += '	<div style="width:100%; height:120px;">';
+						tempstr += '	<div class="testtest" style="width:100%; height:120px;">';
 						tempstr += '		<div style="width:50px; float:left; margin-top:15px; margin-left:15px;">';
 						tempstr += '			<img src="images/icon.png"></img>';
 						tempstr += '		</div>';
 						tempstr += '		<div style="width:426px; float:left; margin-top:15px; margin-left:5px; margin-right:15px;">';
 						tempstr += '			<div style="float:left; font-size:11pt; font-weight:bold; color:#00A9A7;">'+json.results[i].username+'</div><div align="right" style="font-size:8pt; color:#7F8C8D;">5 minutes ago</div>';
-						tempstr += '			<div style="width:426px; height:20px; overflow:hidden; font-size:14pt; color:#B4975A; text-decoration:underline;">'+json.results[i].title+'</div>';
+						tempstr += '			<div style="width:426px; height:20px; overflow:hidden; font-size:14pt; color:#B4975A; text-decoration:underline;">'+json.results[i].summary+'</div>';
 						tempstr += '			<div style="width:426px; height:40px; overflow:hidden;">'+json.results[i].description+'</div>';
 						tempstr += '			<img src="images/comments.png"></img>';
 						tempstr += '			<img src="images/flags.png"></img>';
-						tempstr += '			<img src="images/charges.png"></img>';
+						tempstr += '			<img id="charges" class="charge_button" src="images/charges.png"></img>';
 						tempstr += '		</div>';
 						tempstr += '	</div>';
 						tempstr += '	<div style="width:100%; height:1px; margin-left:1px; margin-top:-1px; background-color:#B4975A;"></div>';
+						ideasCount += 1;
 					}
 					document.getElementById("feed").innerHTML = tempstr;
 				}
 			}
-			xmlhttp.open("POST", "http://localhost:1110/newfeed", true);
+			xmlhttp.open("POST", serveraddress+"/newfeed", true);
 			xmlhttp.send();
 		};
+		load();
 		
 		$("#compose").click(function() {
 			document.getElementById("popup_bg").style.display="inline";
@@ -148,17 +166,17 @@
 					document.getElementById("error_input").innerHTML += temp;
 				}
 			}
-			xmlhttp.open("POST", "http://localhost:1110/compose", true);
+			xmlhttp.open("POST", serveraddress+"/compose", true);
 			//xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-			var testingtesting = "username=";
-			testingtesting += document.getElementById("username_input").value;
-			testingtesting += "&title=";
-			testingtesting += document.getElementById("title_input").value;
-			testingtesting += "&summary=";
-			testingtesting += document.getElementById("summary_input").value;
-			testingtesting += "&description=";
-			testingtesting += document.getElementById("description_input").value;
-			xmlhttp.send(testingtesting);
+			var tempPost = "username=";
+			tempPost += document.getElementById("username_input").value;
+			tempPost += "&title=";
+			tempPost += document.getElementById("title_input").value;
+			tempPost += "&summary=";
+			tempPost += document.getElementById("summary_input").value;
+			tempPost += "&description=";
+			tempPost += document.getElementById("description_input").value;
+			xmlhttp.send(tempPost);
 			
 			//	Reload feed
 			load();
@@ -190,16 +208,47 @@
 					}
 				}
 			}
-			xmlhttp.open("POST", "http://localhost:1110", true);
+			xmlhttp.open("POST", serveraddress, true);
 			//xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-			var testingtesting = "username=";
-			testingtesting += document.getElementById("usernametest_input").value;
-			testingtesting += "&lname=Ford";
-			xmlhttp.send(testingtesting);
+			var tempPost = "username=";
+			tempPost += document.getElementById("usernametest_input").value;
+			tempPost += "&lname=Ford";
+			xmlhttp.send(tempPost);
 		};
 		
+		var test2 = function () {
+			alert(localStorage.username);
+		};
+		
+		var test3 = function () {
+			localStorage.clear();
+			alert("local storage is cleared");
+		};
+		
+		$(".tab").mouseover(function () {
+			$(this).css("background", "#00A9A7");
+		});
+		$(".tab").mouseout(function () {
+			$(this).css("background", "#7F8C8D");
+		});
+		
+		$("#compose").mouseover(function () {
+			$(this).attr('src', 'images/compose_down.png');
+		});
+		$("#compose").mouseout(function () {
+			$(this).attr('src', 'images/compose.png');
+		});
+		
+		$(".charge_button").click(function () {
+			var temp = $(this).attr('id');
+			alert(temp);
+		});
+		
+		
+		
+		
 		//	Load feed at page load
-		load();
+		//load();
 		
 		
 		//	~~~~~~~*~~~~~~~*~~~~~~~*~~~~~~~*

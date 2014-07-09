@@ -3,6 +3,10 @@ var url = require('url');
 var mysql = require('mysql');
 var qs = require('querystring');
 
+var ipaddress = '10.1.98.138';
+var port = '1110';
+var serveraddress = 'http://'+ipaddress+':'+port;
+
 var connection = mysql.createConnection({
     host: "localhost",
     user: "root",
@@ -51,4 +55,51 @@ http.createServer(function (request, response) {
 			response.end();
 		});	
 	}
-}).listen(1110, 'localhost');
+	else if (parameter[1] == "login" && parameter.length == 2 && request.method == 'POST') {
+		console.log("logging in");
+        var body = '';
+        request.on('data', function (data) {
+            body += data;
+
+            if (body.length > 1e6)
+                req.connection.destroy();
+        });
+        request.on('end', function () {
+            var post = qs.parse(body);
+			var theQuery = "SELECT username FROM profile WHERE username='"+post['username']+"'";
+			connection.query(theQuery, function (error, rows, fields) {
+				response.writeHead(200, {
+					'Access-Control-Allow-Origin': '*',
+					'Content-Type': 'text/plain'
+				});
+				response.write(JSON.stringify(rows));
+				response.end();
+			});
+			console.log(post);
+        });
+    }
+	else if (parameter[1] == "signup" && parameter.length == 2 && request.method == 'POST') {
+		console.log("signing up");
+        var body = '';
+        request.on('data', function (data) {
+            body += data;
+
+            if (body.length > 1e6)
+                req.connection.destroy();
+        });
+        request.on('end', function () {
+            var post = qs.parse(body);
+			var theQuery = "INSERT INTO profile (id, username, level, last_seen, date_joined) VALUES (NULL, '"+post['username']+"', '0', '12-12-12', '12-12-12')";			
+			connection.query(theQuery, function (error, rows, fields) {
+				console.log(error);
+				response.writeHead(200, {
+					'Access-Control-Allow-Origin': '*',
+					'Content-Type': 'text/plain'
+				});
+				response.write(JSON.stringify(error));
+				response.end();
+			});
+			console.log(post);
+        });
+    }
+}).listen(port, ipaddress);

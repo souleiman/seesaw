@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>iMagine</title>
+	<script src="libs/jquery.js"></script>
+	<script src="libs/jquery_ui_min.js"></script>
+	<link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+	<div id="splash_bg">
+		<div id="splash">
+			<img src="images/splash.png"></img>
+			<div id="signup_button" style="width:99px; height:29px; position:absolute; top:50%; left:30%; background:url('images/signup.png');"></div>
+			<div id="login_button" style="width:99px; height:29px; position:absolute; top:50%; left:55%; background:url('images/login.png');"></div>
+		</div>
+	</div>
+	
+	<div id="popup_bg"></div>
+	<div id="loginform">
+		<div style="width:100%; margin-top:10px; margin-bottom:25px; text-align:center; font-size:26pt; font-weight:bold; color:#00A9A7;">Login</div>
+		<div style="width:100%; height:1px; margin-left:1px; margin-top:-1px; background-color:#B4975A;"></div>
+		<div style="font-size:18px; margin-top:10px; margin-bottom:10px;">Username: <input id="username_input" maxlength="20" style="width:256px; position:absolute; right:120px; font-size:11px;"></textarea></div>
+		<div style="width:100%; height:1px; margin-left:1px; margin-top:-1px; background-color:#B4975A;"></div>
+		<div style="font-size:18px; margin-top:10px; margin-bottom:10px;">Password: <input id="password_input" maxlength="20" type="password" style="width:256px; position:absolute; right:120px; font-size:11px;"></textarea></div>
+		<div style="width:100%; height:1px; margin-left:1px; margin-top:-1px; background-color:#B4975A;"></div>
+		<div style="width:100%; height:25px; margin-top:10px; margin-bottom:10px;"><input id="loginform_button" type="submit" style="position:absolute; right:120px;"></div>
+		<div style="width:100%; height:1px; margin-left:1px; margin-top:-1px; background-color:#B4975A;"></div>
+		<div id="error_input" style="color:red;"></div>
+	</div>
+	
+	<div id="signupform">
+		<div style="width:100%; margin-top:10px; margin-bottom:25px; text-align:center; font-size:26pt; font-weight:bold; color:#00A9A7;">Signup</div>
+		<div style="width:100%; height:1px; margin-left:1px; margin-top:-1px; background-color:#B4975A;"></div>
+		<div style="font-size:18px; margin-top:10px; margin-bottom:10px;">Username: <input id="username_input_signup" maxlength="20" style="width:256px; position:absolute; right:120px; font-size:11px;"></textarea></div>
+		<div style="width:100%; height:1px; margin-left:1px; margin-top:-1px; background-color:#B4975A;"></div>
+		<div style="font-size:18px; margin-top:10px; margin-bottom:10px;">Password: <input id="password_input_signup" maxlength="20" type="password" style="width:256px; position:absolute; right:120px; font-size:11px;"></textarea></div>
+		<div style="width:100%; height:1px; margin-left:1px; margin-top:-1px; background-color:#B4975A;"></div>
+		<div style="width:100%; height:25px; margin-top:10px; margin-bottom:10px;"><input id="signupform_button" type="submit" style="position:absolute; right:120px;"></div>
+		<div style="width:100%; height:1px; margin-left:1px; margin-top:-1px; background-color:#B4975A;"></div>
+		<div id="error_input_signup" style="color:red;"></div>
+	</div>
+	
+	<script>
+	var ipaddress = '10.1.98.138';
+	var port = '1110';
+	var serveraddress = 'http://'+ipaddress+':'+port;
+		
+		
+	//	Show or hide forms
+	$("#login_button").click(function () {
+		document.getElementById("popup_bg").style.display = "inline";
+		document.getElementById("loginform").style.display = "inline";
+	});
+	
+	$("#signup_button").click(function () {
+		document.getElementById("popup_bg").style.display = "inline";
+		document.getElementById("signupform").style.display = "inline";
+	});
+	
+	$("#popup_bg").click(function () {
+		document.getElementById("popup_bg").style.display = "none";
+		document.getElementById("loginform").style.display = "none";
+		document.getElementById("signupform").style.display = "none";
+	});
+	
+	//	Submit login or signup forms
+	$("#loginform_button").click(function () {
+		var xmlhttp = new XMLHttpRequest();
+		xmlhttp.onreadystatechange = function () {
+			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {				
+				var temp = '{"results":';
+				temp += xmlhttp.responseText;
+				temp += '}';
+				var json = JSON.parse(temp);
+				
+				if (json.results.length == 0) {
+					//	Report invalid username and password if error
+					document.getElementById("error_input").innerHTML = "Invalid Username and/or password.";
+				}
+				else {
+					localStorage.username = "" + json.results[0].username;
+					//	Go to homepage
+					var tempaddress = 'http://10.1.98.138/seesawclone';
+					window.location = tempaddress+"/index.html";
+				}
+			}
+		}
+		xmlhttp.open("POST", serveraddress+"/login", true);
+		var tempPost = "username=";
+		tempPost += document.getElementById("username_input").value;
+		tempPost += "&password=";
+		tempPost += document.getElementById("password_input").value;
+		xmlhttp.send(tempPost);
+	});
+	
+	$("#signupform_button").click(function () {
+		var xmlhttp = new XMLHttpRequest();
+		xmlhttp.onreadystatechange = function () {
+			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {	
+				var temp = xmlhttp.responseText;
+				var json = JSON.parse(temp);			
+				
+				if (temp == "null") {
+					localStorage.username = "" + document.getElementById("username_input_signup").value;
+					//	Go to homepage
+					var tempaddress = 'http://10.1.98.138/seesawclone';
+					window.location = tempaddress+"/index.html";
+				}
+				else if (json["errno"] == "1062") {
+					document.getElementById("error_input_signup").innerHTML = "Username already taken";
+				}
+				else {
+					document.getElementById("error_input_signup").innerHTML = "An unexpected error has occured.";
+				}					
+			}
+		}
+		xmlhttp.open("POST", serveraddress+"/signup", true);
+		var tempPost = "username=";
+		tempPost += document.getElementById("username_input_signup").value;
+		tempPost += "&password=";
+		tempPost += document.getElementById("password_input_signup").value;
+		xmlhttp.send(tempPost);
+	});
+	</script>
+</body>
+</html>

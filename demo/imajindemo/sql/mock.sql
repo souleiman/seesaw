@@ -5,14 +5,14 @@ INSERT INTO PROFILE (username, last_seen, date_joined) VALUES ('Ankit', '12-12-1
 INSERT INTO PROFILE (username, last_seen, date_joined) VALUES ('Abdullah', '12-12-14', '12-12-14');
 
 -- Contents
-INSERT INTO CONTENT (title, summary, description, username, last_modified, date_created)
-    VALUES ('Title A', 'This is a summary', 'This is a description', 'Ty', '12-12-12', '12-12-12');
-INSERT INTO CONTENT (title, summary, description, username, last_modified, date_created)
-    VALUES ('Title B', 'This is a summary 2', 'This is a description 2', 'Soul', '12-12-12', '12-12-12');
-INSERT INTO CONTENT (title, summary, description, username, last_modified, date_created)
-    VALUES ('Title C', 'This is a summary 3', 'This is a description 3', 'Ankit', '12-12-12', '12-12-12');
-INSERT INTO CONTENT (title, summary, description, username, last_modified, date_created)
-    VALUES ('Title D', 'This is a summary 4', 'This is a description 4', 'Abdullah', '12-12-12', '12-12-12');
+INSERT INTO CONTENT (title, summary, description, last_modified, date_created)
+    VALUES ('Title A', 'This is a summary', 'This is a description', '12-12-12', '12-12-12');
+INSERT INTO CONTENT (title, summary, description, last_modified, date_created)
+    VALUES ('Title B', 'This is a summary 2', 'This is a description 2', '12-12-12', '12-12-12');
+INSERT INTO CONTENT (title, summary, description, last_modified, date_created)
+    VALUES ('Title C', 'This is a summary 3', 'This is a description 3', '12-12-12', '12-12-12');
+INSERT INTO CONTENT (title, summary, description, last_modified, date_created)
+    VALUES ('Title D', 'This is a summary 4', 'This is a description 4', '12-12-12', '12-12-12');
 
 -- Content Author
 

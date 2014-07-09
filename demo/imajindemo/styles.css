@@ -1,0 +1,185 @@
+html {
+	height:100%;
+	margin:0px;
+	padding:0px;
+	font-family:arial;
+	font-size:10pt;
+	line-height:140%;
+}
+
+body {
+	height:100%;
+	margin:0px;
+	padding:0px;
+	background-color:#ECECEC;
+}
+
+#header_bg {
+	width:100%;
+	height:50px;
+	background-color:#FFFFFF;
+}
+
+#navbar {
+	width:1024px;
+	height:50px;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+#logo {
+	position:absolute;
+	left:50%;
+	margin-left:-84px;
+}
+
+
+#header_border {
+	width:100%;
+	height:1px;
+	background:url('images/goldline.png');
+}
+
+#content {
+	width:1024px;
+	height:100%;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+#tabs {
+	width:256px;
+	height:100%;
+	float:left;
+}
+
+.charge_button {
+	width:15px;
+	height:15px;
+	float:left;
+	background:url('images/charges.png');
+}
+
+#newtab {
+	width:100%;
+	height:60px;
+	background-color:#7F8C8D;
+	font-family:verdana;
+	color:white;
+	font-size:36px;
+	text-align:center;
+	line-height:initial;
+	padding-top:10px;
+}
+
+#goldline {
+	width:100%;
+	height:1px;
+	background-color:#ECECEC;
+}
+
+#feed {
+	width:600px;
+	float:left;
+	background-color:white;
+}
+
+#tools {
+	width:168px;
+	height:100%;
+	float:left;
+}
+
+#search {
+	height:30px;
+	margin-left:0px;
+	margin-top:0px;
+	padding-left:5px;
+	background-color:#7F8C8D;
+	color:#FFFFFF;
+}
+
+#popup_bg {
+	width:100%;
+	height:100%;
+	background-color:black;
+	opacity:0.85;
+	position:absolute;
+	top:0px;
+	left:0px;
+	display:none;
+}
+
+#ideaform {
+	width:512px;
+	height:512px;
+	background-color:white;
+	position:absolute;
+	top:50%;
+	left:50%;
+	margin-left:-256px;
+	margin-top:-256px;
+	padding-left:20px;
+	padding-right:20px;
+	padding-top:20px;
+	border-style:solid;
+	border-width:5px;
+	border-color:#B4975A;
+	display:none;"
+}
+
+#loginform {
+	width:512px;
+	height:512px;
+	background-color:white;
+	position:absolute;
+	top:50%;
+	left:50%;
+	margin-left:-256px;
+	margin-top:-256px;
+	padding-left:20px;
+	padding-right:20px;
+	padding-top:20px;
+	border-style:solid;
+	border-width:5px;
+	border-color:#B4975A;
+	display:none;"
+}
+
+#signupform {
+	width:512px;
+	height:512px;
+	background-color:white;
+	position:absolute;
+	top:50%;
+	left:50%;
+	margin-left:-256px;
+	margin-top:-256px;
+	padding-left:20px;
+	padding-right:20px;
+	padding-top:20px;
+	border-style:solid;
+	border-width:5px;
+	border-color:#B4975A;
+	display:none;"
+}
+
+#splash_bg {
+	width:100%;
+	height:100%;
+	background-color:#FFFFFF;
+	position:absolute;
+	top:0px;
+	left:0px;
+	overflow:hidden;
+}
+
+#splash {
+	width:1024px;
+	height:768px;
+	position:absolute;
+	top:50%;
+	left:50%;
+	margin-left:-512px;
+	margin-top:-384px;
+}
